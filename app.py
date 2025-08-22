@@ -16,16 +16,14 @@ app = FastAPI(title="WhatsApp Webhook (Python)")
 def root():
     return {"ok": True, "msg": "Yes yes it is working"}
 
-# Webhook verification (GET /webhook)
 @app.get("/webhook", response_class=PlainTextResponse)
-def verify(mode: str | None = None, hub_challenge: str | None = None, hub_verify_token: str | None = None, **qs):
-    # Meta sends these as query params: hub.mode / hub.challenge / hub.verify_token
-    mode = qs.get("hub.mode", mode)
-    challenge = qs.get("hub.challenge", hub_challenge)
-    token = qs.get("hub.verify_token", hub_verify_token)
-
-    if mode == "subscribe" and token == VERIFY_TOKEN:
-        return challenge or ""
+def verify(
+    hub_mode: str | None = Query(None, alias="hub.mode"),
+    hub_challenge: str | None = Query(None, alias="hub.challenge"),
+    hub_verify_token: str | None = Query(None, alias="hub.verify_token"),
+):
+    if hub_mode == "subscribe" and hub_verify_token == VERIFY_TOKEN:
+        return hub_challenge or ""
     raise HTTPException(status_code=403, detail="Verification failed")
 
 # Webhook receiver (POST /webhook)
