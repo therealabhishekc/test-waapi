@@ -66,8 +66,11 @@ async def webhook(request: Request):
         data = {
             "messaging_product": "whatsapp",
             "to": from_e164,
-            "type": "text",
-            "text": {"body": reply_text}  # your reply text
+            "type": "template",
+            "template": {
+                "name": "jtesting",  # Pre-approved template name
+                "language": {"code": "en_US"}
+            }
         }
         try:
             resp = requests.post(url, json=data, headers=headers, timeout=15)
