@@ -53,9 +53,8 @@ async def webhook(request: Request):
 
     # Text body if present
     msg_body = (msg.get("text") or {}).get("body", "")
-    print("********************************************************")
-    print(f"Message from {from_e164}: {msg_body}")
-    print("********************************************************")
+
+    reply_text = "Unsubscribed" if msg_body.lower() == "stop" else "Subscribed"
 
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
@@ -68,7 +67,7 @@ async def webhook(request: Request):
             "messaging_product": "whatsapp",
             "to": from_e164,
             "type": "text",
-            "text": {"body": "Hi, im aski"}  # your reply text
+            "text": {"body": reply_text}  # your reply text
         }
         try:
             resp = requests.post(url, json=data, headers=headers, timeout=15)
