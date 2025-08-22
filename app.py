@@ -3,6 +3,7 @@ import requests
 from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import PlainTextResponse
 from dotenv import load_dotenv
+import json
 
 load_dotenv()
 
@@ -30,6 +31,7 @@ def verify(
 @app.post("/webhook")
 async def webhook(request: Request):
     body = await request.json()
+    print(json.dumps(body, indent=2))
     # print nicely if you want:
     # import json; print(json.dumps(body, indent=2))
 
@@ -55,7 +57,10 @@ async def webhook(request: Request):
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
         url = f"https://graph.facebook.com/v22.0/{phone_number_id}/messages"
-        headers = {"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"}
+        headers = {
+            "Authorization": f"Bearer {TOKEN}", 
+            "Content-Type": "application/json"
+        }
         data = {
             "messaging_product": "whatsapp",
             "to": from_e164,
