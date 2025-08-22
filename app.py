@@ -1,6 +1,6 @@
 import os
 import requests
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Query
 from fastapi.responses import PlainTextResponse
 from dotenv import load_dotenv
 
