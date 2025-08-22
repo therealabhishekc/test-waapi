@@ -70,7 +70,7 @@ async def webhook(request: Request):
             # "text": {"body": reply_text}
             "type": "template",
             "template": {
-                "name": "hello_world",  # Pre-approved template name
+                "name": "jtesting",  # Pre-approved template name
                 "language": {"code": "en_US"}
             }
         }
