@@ -76,7 +76,7 @@ async def webhook(request: Request):
                     {
                         "type": "body",
                         "parameters": [
-                            {"type": "text", "text": "Abhishek"}  # value for {{1}}
+                            {"type": "text", "parameter_name": "crisis", "text": "Abhishek"}  # value for {{1}}
                         ]
                     }
                 ]
