@@ -71,7 +71,15 @@ async def webhook(request: Request):
             "type": "template",
             "template": {
                 "name": "test1",  # Pre-approved template name
-                "language": {"code": "en"}
+                "language": {"code": "en"},
+                "components": [
+                    {
+                        "type": "body",
+                        "parameters": [
+                            {"type": "text", "text": "Abhishek"}  # value for {{1}}
+                        ]
+                    }
+                ]
             }
         }
         try:
