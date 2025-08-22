@@ -80,6 +80,9 @@ async def webhook(request: Request):
         except requests.RequestException as e:
             # Log error in real app
             print("Send error:", e)
+            if resp is not None:
+                print("Status:", resp.status_code)
+                print("Graph body:", resp.text)
 
     return {"ok": True}
 
