@@ -53,6 +53,9 @@ async def webhook(request: Request):
 
     # Text body if present
     msg_body = (msg.get("text") or {}).get("body", "")
+    print("********************************************************")
+    print(f"Message from {from_e164}: {msg_body}")
+    print("********************************************************")
 
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
@@ -64,6 +67,7 @@ async def webhook(request: Request):
         data = {
             "messaging_product": "whatsapp",
             "to": from_e164,
+            "type": "text",
             "text": {"body": "Hi, im aski"}  # your reply text
         }
         try:
