@@ -88,20 +88,20 @@ async def webhook(request: Request):
             # "text": {"body": reply_text}
             "type": "template",
             "template": {
-                "name": "junemark",  # Pre-approved template name
+                "name": "test1",  # Pre-approved template name
                 "language": {"code": "en"},
-                # "components": [
-                #     {
-                #         "type": "body",
-                #         "parameters": [
-                #             {
-                #                 "type": "text", 
-                #                 "parameter_name": "crisis", 
-                #                 "text": "testing"
-                #             }  
-                #         ]
-                #     }
-                # ]
+                "components": [
+                    {
+                        "type": "body",
+                        "parameters": [
+                            {
+                                "type": "text", 
+                                "parameter_name": "crisis", 
+                                "text": "testing"
+                            }  
+                        ]
+                    }
+                ]
             }
         }
         try:
