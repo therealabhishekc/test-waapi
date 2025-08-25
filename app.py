@@ -155,6 +155,18 @@ async def send_bulk(
                 "template": {
                     "name": template,
                     "language": {"code": lang},
+                    "components": [
+                    {
+                        "type": "body",
+                        "parameters": [
+                            {
+                                "type": "text", 
+                                "parameter_name": "crisis", 
+                                "text": "testing"
+                            }  
+                        ]
+                    }
+                ]
                     # "components": [
                     #     {"type": "body", "parameters": body_params}
                     # ],
