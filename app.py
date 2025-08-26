@@ -140,6 +140,10 @@ async def send_bulk(
         tasks = []
         send_order = []  # keep (to) aligned with responses
         results = []
+        components = [{
+                "type": "body",
+                "parameters": body_params
+            }]
 
         for to, info in RECIPIENTS.items():
 
@@ -149,12 +153,26 @@ async def send_bulk(
                     "text": "nice",
                     "parameter_name": "crisis"}
                 ]
+    
+
             elif template == "show_team":
                 body_params = [
                     {"type": "text", 
                     "text": str(info.get("name", "")), 
                     "parameter_name": "name"}
-                ]
+                ]               
+                components.append({
+                    "type": "header",
+                    "parameters": [
+                        { "type": "image", 
+                          "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png" } }
+                    ]
+                })
+
+            components.append({
+                "type": "body",
+                "parameters": body_params
+            })
 
             payload = {
                 "messaging_product": "whatsapp",
@@ -163,21 +181,7 @@ async def send_bulk(
                 "template": {
                     "name": template,
                     "language": {"code": lang},
-                #     "components": [
-                #     {
-                #         "type": "body",
-                #         "parameters": [
-                #             {
-                #                 "type": "text", 
-                #                 "parameter_name": "name", 
-                #                 "text": str(info.get("name", ""))
-                #             }  
-                #         ]
-                #     }
-                # ]
-                    "components": [
-                        {"type": "body", "parameters": body_params}
-                    ],
+                    "components": components,
                 },
             }
 
