@@ -154,17 +154,20 @@ async def send_bulk(
                     ]
                 })
 
-            elif template == "show_team":
-                body_params.append(
-                    {"type": "text", 
-                    "text": str(info.get("name", "")), 
-                    "parameter_name": "name"}
-                )            
+            elif template == "show_team": 
                 components.append({
                     "type": "header",
                     "parameters": [
                         { "type": "image", 
                           "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png" } }
+                    ]
+                })
+                components.append({
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", 
+                        "text": str(info.get("name", "")), 
+                        "parameter_name": "name"}
                     ]
                 })
 
