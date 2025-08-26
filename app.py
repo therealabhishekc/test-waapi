@@ -89,7 +89,7 @@ async def webhook(request: Request):
                 "messaging_product": "whatsapp",
                 "to": from_e164,
                 "type": "text",
-                "text": {"body": reply_text}
+                "text": {"body": unsub}
             }
         else:
             payload = {
