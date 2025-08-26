@@ -17,6 +17,10 @@ PORT = int(os.getenv("PORT", "8000"))
 PHONE_NUMBER_ID = os.getenv("PHONE_NUMBER_ID")
 
 
+unsub = "You have been successfully Unsubscribe from our mailing list. \
+        Feel free to contact us for any queries in the future. \
+        /n Phone: 972 231 6776"
+
 # Example “hashmap” of recipients (E.164 numbers; no spaces, usually no '+')
 RECIPIENTS = {
     "14694652751": {"name": "Ahishek", "address": "11 Apple St, NY", "buying_power": "Low"},
@@ -26,7 +30,7 @@ RECIPIENTS = {
 
 
 # Initialize FastAPI app
-app = FastAPI(title="WhatsApp Webhook (Python)")
+app = FastAPI(title="webhook")
 
 
 # Root endpoint
@@ -72,7 +76,7 @@ async def webhook(request: Request):
     # Text body if present
     msg_body = (msg.get("text") or {}).get("body", "")
 
-    reply_text = "Unsubscribed" if msg_body.lower() == "stop" else "Subscribed"
+    reply_text = unsub if msg_body.lower() == "Unsubscribed" 
 
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
@@ -81,31 +85,41 @@ async def webhook(request: Request):
             "Authorization": f"Bearer {TOKEN}", 
             "Content-Type": "application/json"
         }
-        data = {
-            "messaging_product": "whatsapp",
-            "to": from_e164,
-            # "type": "text",
-            # "text": {"body": reply_text}
-            "type": "template",
-            "template": {
-                "name": "test1",  # Pre-approved template name
-                "language": {"code": "en"},
-                "components": [
-                    {
-                        "type": "body",
-                        "parameters": [
-                            {
-                                "type": "text", 
-                                "parameter_name": "crisis", 
-                                "text": "testing"
-                            }  
-                        ]
-                    }
-                ]
+
+        if msg_body.lower() == "Unsubscribed":
+            payload = {
+                "messaging_product": "whatsapp",
+                "to": from_e164,
+                "type": "text",
+                "text": {"body": reply_text}
             }
-        }
+        else:
+            payload = {
+                "messaging_product": "whatsapp",
+                "to": from_e164,
+                # "type": "text",
+                # "text": {"body": reply_text}
+                "type": "template",
+                "template": {
+                    "name": "test1",  # Pre-approved template name
+                    "language": {"code": "en"},
+                    "components": [
+                        {
+                            "type": "body",
+                            "parameters": [
+                                {
+                                    "type": "text", 
+                                    "parameter_name": "crisis", 
+                                    "text": "testing"
+                                }  
+                            ]
+                        }
+                    ]
+                }
+            }
+            
         try:
-            resp = requests.post(url, json=data, headers=headers, timeout=15)
+            resp = requests.post(url, json=payload, headers=headers, timeout=15)
             resp.raise_for_status()
         except requests.RequestException as e:
             # Log error in real app
