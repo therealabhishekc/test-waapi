@@ -75,6 +75,8 @@ async def webhook(request: Request):
 
     # Text body if present
     msg_body = (msg.get("text") or {}).get("body", "")
+    btn = msg.get("button") or {}
+    clicked_text = btn.get("text")
 
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
@@ -84,7 +86,7 @@ async def webhook(request: Request):
             "Content-Type": "application/json"
         }
 
-        if msg_body.lower() == "unsubscribe":
+        if clicked_text.lower() == "unsubscribe":
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
