@@ -143,7 +143,7 @@ async def send_bulk(
 
         for to, info in RECIPIENTS.items():
 
-            if template == "junemark":
+            if template == "test1":
                 body_params = [
                     {"type": "text", 
                     "text": "nice",
