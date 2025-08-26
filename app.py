@@ -161,8 +161,8 @@ async def send_bulk(
                         "parameters": [
                             {
                                 "type": "text", 
-                                "parameter_name": "crisis", 
-                                "text": "testing"
+                                "parameter_name": "name", 
+                                "text": str(info.get("name", ""))
                             }  
                         ]
                     }
