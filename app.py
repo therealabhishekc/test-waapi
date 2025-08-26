@@ -2,7 +2,7 @@ import os
 import requests
 import asyncio
 import httpx
-from fastapi import FastAPI, Request, HTTPException, Query
+from fastapi import FastAPI, Request, HTTPException, Query, BackgroundTasks
 from fastapi.responses import PlainTextResponse
 from dotenv import load_dotenv
 import json
@@ -16,10 +16,12 @@ VERIFY_TOKEN = os.getenv("MYTOKEN")  # Webhook verify token you chose
 PORT = int(os.getenv("PORT", "8000"))
 PHONE_NUMBER_ID = os.getenv("PHONE_NUMBER_ID")
 
+PDF_LOCAL_PATH = os.getenv("PDF_LOCAL_PATH") or "files/catalogue.pdf"
+
 
 unsub = "You have been successfully Unsubscribe from our mailing list. \
         Feel free to contact us for any queries in the future. \
-        /n Phone: 972 231 6776"
+        Phone: 972 231 6776"
 
 # Example “hashmap” of recipients (E.164 numbers; no spaces, usually no '+')
 RECIPIENTS = {
@@ -51,9 +53,45 @@ def verify(
     raise HTTPException(status_code=403, detail="Verification failed")
 
 
+def upload_and_send_document(to: str, file_path: str, filename: str | None = None, caption: str = ""):
+    # 1) upload
+    up_url = f"https://graph.facebook.com/v22.0/{PHONE_NUMBER_ID}/media"
+    with open(file_path, "rb") as f:
+        files = {"file": (filename or os.path.basename(file_path), f, "application/pdf")}
+        data = {"messaging_product": "whatsapp"}
+        up = requests.post(
+            up_url, 
+            headers={"Authorization": f"Bearer {TOKEN}"}, 
+            files=files, 
+            data=data, 
+            timeout=40
+        )
+    up.raise_for_status()
+    media_id = up.json()["id"]
+
+    return {
+        "messaging_product": "whatsapp",
+        "to": to,
+        "type": "document",
+        "document": {"id": media_id, "filename": filename or os.path.basename(file_path), **({"caption": caption} if caption else {})}
+    }
+
+    # 2) send by id
+    # send_url = f"https://graph.facebook.com/v22.0/{PHONE_NUMBER_ID}/messages"
+    # payload = {
+    #     "messaging_product": "whatsapp",
+    #     "to": to,
+    #     "type": "document",
+    #     "document": {"id": media_id, "filename": filename or os.path.basename(file_path), **({"caption": caption} if caption else {})}
+    # }
+    # resp = requests.post(send_url, json=payload, headers=_headers(), timeout=20)
+    # print("send_document_id:", resp.status_code, resp.text)
+    # resp.raise_for_status()
+
+
 # Webhook receiver (POST /webhook)
 @app.post("/webhook")
-async def webhook(request: Request):
+async def webhook(request: Request, background: BackgroundTasks):
     body = await request.json()
     print(json.dumps(body, indent=2))
 
@@ -94,29 +132,8 @@ async def webhook(request: Request):
                 "text": {"body": unsub}
             }
         else:
-            payload = {
-                "messaging_product": "whatsapp",
-                "to": from_e164,
-                # "type": "text",
-                # "text": {"body": reply_text}
-                "type": "template",
-                "template": {
-                    "name": "test1",  # Pre-approved template name
-                    "language": {"code": "en"},
-                    "components": [
-                        {
-                            "type": "body",
-                            "parameters": [
-                                {
-                                    "type": "text", 
-                                    "parameter_name": "crisis", 
-                                    "text": "testing"
-                                }  
-                            ]
-                        }
-                    ]
-                }
-            }
+            if PDF_LOCAL_PATH and os.path.exists(PDF_LOCAL_PATH):
+                payload = upload_and_send_document(from_e164, PDF_LOCAL_PATH, "catalog.pdf", "Here is your PDF 📄")
             
         try:
             resp = requests.post(url, json=payload, headers=headers, timeout=15)
