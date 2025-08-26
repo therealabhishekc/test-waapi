@@ -84,7 +84,7 @@ async def webhook(request: Request):
             "Content-Type": "application/json"
         }
 
-        if msg_body.lower() == "Unsubscribed":
+        if msg_body.lower() == "Unsubscribe":
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
