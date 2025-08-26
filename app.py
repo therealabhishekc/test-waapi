@@ -142,11 +142,19 @@ async def send_bulk(
         results = []
 
         for to, info in RECIPIENTS.items():
-            body_params = [
-                {"type": "text", "text": str(info.get("name", ""))},
-                {"type": "text", "text": str(info.get("address", ""))},
-                {"type": "text", "text": str(info.get("buying_power", ""))},
-            ]
+
+            if template == "junemark":
+                body_params = [
+                    {"type": "text", 
+                    "text": "nice",
+                    "parameter_name": "crisis"}
+                ]
+            elif template == "show_team":
+                body_params = [
+                    {"type": "text", 
+                    "text": str(info.get("name", "")), 
+                    "parameter_name": "name"}
+                ]
 
             payload = {
                 "messaging_product": "whatsapp",
@@ -155,21 +163,21 @@ async def send_bulk(
                 "template": {
                     "name": template,
                     "language": {"code": lang},
+                #     "components": [
+                #     {
+                #         "type": "body",
+                #         "parameters": [
+                #             {
+                #                 "type": "text", 
+                #                 "parameter_name": "name", 
+                #                 "text": str(info.get("name", ""))
+                #             }  
+                #         ]
+                #     }
+                # ]
                     "components": [
-                    {
-                        "type": "body",
-                        "parameters": [
-                            {
-                                "type": "text", 
-                                "parameter_name": "name", 
-                                "text": str(info.get("name", ""))
-                            }  
-                        ]
-                    }
-                ]
-                    # "components": [
-                    #     {"type": "body", "parameters": body_params}
-                    # ],
+                        {"type": "body", "parameters": body_params}
+                    ],
                 },
             }
 
