@@ -140,6 +140,7 @@ async def send_bulk(
         tasks = []
         send_order = []  # keep (to) aligned with responses
         results = []
+        body_params = []
         components = [{
                 "type": "body",
                 "parameters": body_params
@@ -148,19 +149,18 @@ async def send_bulk(
         for to, info in RECIPIENTS.items():
 
             if template == "test1":
-                body_params = [
+                body_params.append(
                     {"type": "text", 
                     "text": "nice",
                     "parameter_name": "crisis"}
-                ]
-    
+                )
 
             elif template == "show_team":
-                body_params = [
+                body_params.append(
                     {"type": "text", 
                     "text": str(info.get("name", "")), 
                     "parameter_name": "name"}
-                ]               
+                )            
                 components.append({
                     "type": "header",
                     "parameters": [
