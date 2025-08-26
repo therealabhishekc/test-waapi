@@ -141,19 +141,19 @@ async def send_bulk(
         send_order = []  # keep (to) aligned with responses
         results = []
         body_params = []
-        components = [{
-                "type": "body",
-                "parameters": body_params
-            }]
+        components = []
 
         for to, info in RECIPIENTS.items():
 
             if template == "test1":
-                body_params.append(
-                    {"type": "text", 
-                    "text": "nice",
-                    "parameter_name": "crisis"}
-                )
+                components.append({
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", 
+                        "text": "testing",
+                        "parameter_name": "crisis"}
+                    ]
+                })
 
             elif template == "show_team":
                 body_params.append(
@@ -168,11 +168,6 @@ async def send_bulk(
                           "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png" } }
                     ]
                 })
-
-            components.append({
-                "type": "body",
-                "parameters": body_params
-            })
 
             payload = {
                 "messaging_product": "whatsapp",
