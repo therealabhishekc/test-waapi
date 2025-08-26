@@ -76,8 +76,6 @@ async def webhook(request: Request):
     # Text body if present
     msg_body = (msg.get("text") or {}).get("body", "")
 
-    reply_text = unsub if msg_body.lower() == "Unsubscribed" 
-
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
         url = f"https://graph.facebook.com/v22.0/{phone_number_id}/messages"
