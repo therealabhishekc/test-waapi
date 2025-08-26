@@ -140,10 +140,9 @@ async def send_bulk(
         tasks = []
         send_order = []  # keep (to) aligned with responses
         results = []
-        body_params = []
-        components = []
 
         for to, info in RECIPIENTS.items():
+            components = []
 
             if template == "test1":
                 components.append({
