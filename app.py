@@ -124,6 +124,7 @@ async def webhook(request: Request):
             print("Send error:", e)
             if resp is not None:
                 print("Status:", resp.status_code)
+                print(msg_body)
                 print("Graph body:", resp.text)
 
     return {"ok": True}
