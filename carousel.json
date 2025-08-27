@@ -1,11 +1,11 @@
 {
-  "name": "product_carousel",
+  "name": "carousel",
   "language": "en_US",
   "category": "marketing",
   "components": [
     {
       "type": "body",
-      "text": "Hi {{name}}, welcome to the world of Luxury ✨ \n \n Indulge in timeless elegance as you explore our exquisite jewelry collections. As a token of our appreciation, with every purchase of $4000+, you will receive a complimentary 1 gram 24K gold coin.",
+      "text": "Hi {{1}}, welcome to the world of Luxury ✨ \n \n Indulge in timeless elegance as you explore our exquisite jewelry collections. As a token of our appreciation, with every purchase of $4000+, you will receive a complimentary 1 gram 24K gold coin.",
       "example": {
         "body_text": "Pablo"
       }
@@ -14,18 +14,17 @@
       "type": "carousel",
       "cards": [
         {
-          "card_inndex": "0",
           "components": [
             {
               "type": "header",
               "format": "image",
               "example": {
-                "header_handle": ["4:VW50aXRsZWQucG5n:aW1hZ2UvcG5n:ARafn6iVteZ-qjx_7jnb0T9G05_FZfXSi8PhPnDVVy966ZmovyjXmcEqUuS35N7R0rv5kDWU1ceU4KufdPIUWv7VpcR1Efsb25b5k8KpDfQqxg:e:1756612280:620456670393948:100081468894392:ARb9OmA7Hwp5uCXKYiI"]
+                "header_handle": ["4:aW1nMS5wbmc=:aW1hZ2UvcG5n:ARaqwgvo2_gjqiMCJfyfkxgPNEidiUhJzvBh9dReYIYqC74g3ulM-H0UJgRE0sUUSFCvskmmTJEflM9ecr73P41c-OqUzDlj_L4mbhO5scKpkQ:e:1756614932:620456670393948:100081468894392:ARazZ5ickvotZ1IeJ1U\n4:aW1nMS5wbmc=:aW1hZ2UvcG5n:ARYCs1c6yLP3-gTuaTJmk16IlvFr51XsQ19LAcajW5m_BPknhEiqyW5SxESHjy4-2BOfX-ZIQ7qKkjBSvyfM9Yo7JEZTSgb3YcBGjxp8LGGupg:e:1756614932:620456670393948:100081468894392:ARZNJH8EizJfcLLatto"]
               }
             },
             {
               "type": "body",
-              "text": "Image description here"
+              "text": "A lustrous pearl with a 8-12 mm diameter is a rare treasure of nature, cultivated from the depths of the South China Sea; and, available in either iridescent black or opaline white. Each pearl is enhanced by sparkling diamonds of exceptional color and clarity, adding to its captivating allure. This graceful ensemble is offered in various diamond design configurations, available as a matching pendant and earring set."
             },
             {
               "type": "buttons",
@@ -37,18 +36,17 @@
           ]
         },
         {
-          "card_inndex": "0",
           "components": [
             {
               "type": "header",
               "format": "image",
               "example": {
-                "header_handle": ["4:VW50aXRsZWQucG5n:aW1hZ2UvcG5n:ARafn6iVteZ-qjx_7jnb0T9G05_FZfXSi8PhPnDVVy966ZmovyjXmcEqUuS35N7R0rv5kDWU1ceU4KufdPIUWv7VpcR1Efsb25b5k8KpDfQqxg:e:1756612280:620456670393948:100081468894392:ARb9OmA7Hwp5uCXKYiI"]
+                "header_handle": ["4:aW1nMi5wbmc=:aW1hZ2UvcG5n:ARZLWy7ylQwnqL3WaDsyW3YLQLf_lDuErhie2XJSckSoLQssPTo8ODQfuYq5rP8JZYJLsX8hAYKZUAdB5x2AITKEPOMFCgXHjrtjGUAoAfbkMg:e:1756615010:620456670393948:100081468894392:ARaO1UyzvlXQhAKRHPU\n4:aW1nMi5wbmc=:aW1hZ2UvcG5n:ARaNC9lJ0QMC4sSB6Dbu-_1yA7EE6mif9JXkvNx4Dh50Txa8DtAD9mWXfZopXtQ4ZuaJd4Ey0UAPLJGgDKtvZ4ha5sXEJ11WFLrkQYT4hDbJBA:e:1756615011:620456670393948:100081468894392:ARbThouF1ctg_cp6jQQ"]
               }
             },
             {
               "type": "body",
-              "text": "Image description here"
+              "text": "The Nakshatra earring design is a popular and timeless Indian jewelry style, often featuring a cluster of diamonds arranged in a circular or floral pattern. Usually, a central diamond surrounded by six other diamonds, symbolizing the stars or celestial formations, hence the name “Nakshatra” (which means “constellation” in Sanskrit). This style is known for its elegance and simplicity, making it a staple in traditional Indian jewelry."
             },
             {
               "type": "buttons",
@@ -60,18 +58,17 @@
           ]
         }, 
         {
-          "card_inndex": "0",
           "components": [
             {
               "type": "header",
               "format": "image",
               "example": {
-                "header_handle": ["4:VW50aXRsZWQucG5n:aW1hZ2UvcG5n:ARafn6iVteZ-qjx_7jnb0T9G05_FZfXSi8PhPnDVVy966ZmovyjXmcEqUuS35N7R0rv5kDWU1ceU4KufdPIUWv7VpcR1Efsb25b5k8KpDfQqxg:e:1756612280:620456670393948:100081468894392:ARb9OmA7Hwp5uCXKYiI"]
+                "header_handle": ["4:aW1nMy5wbmc=:aW1hZ2UvcG5n:ARZx9u-WZeNa75bCq9m7zxENa35jxJP8MY8Go_hmcCbpnChqG5ezUzr3Lpt-4pT0Jg-qCqVwjxC0oojExkXTW6Xv1_3DibNjL9kkaZ5Op2cyZg:e:1756615101:620456670393948:100081468894392:ARbsgoszPnIA8-rWUqo\n4:aW1nMy5wbmc=:aW1hZ2UvcG5n:ARZEvd3gJCVbhess4tSl512ohRTjx1stjXw5bNMujidkuGKRC_NXQn5xccHWaYPnhyP_teXGkIo0ZorTesEVEusj32MZcIca18ENvJYyN2Yf8Q:e:1756615101:620456670393948:100081468894392:ARYM3QyJ-CtcPx05nIY"]
               }
             },
             {
               "type": "body",
-              "text": "Image description here"
+              "text": "Vibrant tanzanite blue gems lie at the heart of this elegant creation, enhancing a captivating array of seven diamond ‘nakshatra’ motifs, artfully woventhroughout the necklace and earrings. This piece embodies a harmonious blend of  elegance and beauty, making it a perfect and deeply meaningful gift for a loved one."
             },
             {
               "type": "buttons",
