@@ -279,19 +279,6 @@ async def send_bulk(
                 ]
                 },
             }
-                
-
-            payload = {
-                "messaging_product": "whatsapp",
-                "recipient_type": "individual",
-                "to": to,
-                "type": "template",
-                "template": {
-                    "name": template,
-                    "language": {"code": lang},
-                    "components": components,
-                },
-            }
 
             if dry_run:
                 results.append({"to": to, "payload": payload})
