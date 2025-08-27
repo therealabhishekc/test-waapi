@@ -1,6 +1,6 @@
 {
     "name": "testing_carousel",
-    "language": { "code": "en_US" },
+    "language": { "code": "en" },
     "components": [
       {
         "type": "body",
