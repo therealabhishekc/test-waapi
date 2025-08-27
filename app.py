@@ -119,18 +119,26 @@ async def webhook(request: Request, background: BackgroundTasks):
             "Content-Type": "application/json"
         }
 
-        if clicked_text.lower() == "unsubscribe":
+        if clicked_text.lower() in ("unsubscribe", "stop"):
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
                 "type": "text",
                 "text": {"body": unsub}
             }
-        elif clicked_text.lower() == "stop":
+        elif clicked_text.lower() == "shop":
             if PDF_LOCAL_PATH and os.path.exists(PDF_LOCAL_PATH):
                 payload = upload_and_send_document(from_e164, PDF_LOCAL_PATH, "catalog.pdf", comment)
 
-        else:
+        elif clicked_text.lower() == "get to know more":
+            payload = {
+                "messaging_product": "whatsapp",
+                "to": from_e164,
+                "type": "text",
+                "text": {"body": "Amazing! One of our jewelry specialists will be reaching out to you shortly."}
+            }
+
+        elif len(clicked_text.lower()) > 0:
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
