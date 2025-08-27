@@ -175,6 +175,7 @@ async def send_bulk(
 
         for to, info in RECIPIENTS.items():
             components = []
+            name = str(info.get("name", ""))
 
             if template == "test1":
                 components.append({
@@ -198,7 +199,7 @@ async def send_bulk(
                     "type": "body",
                     "parameters": [
                         {"type": "text", 
-                        "text": str(info.get("name", "")), 
+                        "text": name, 
                         "parameter_name": "name"}
                     ]
                 })
@@ -209,7 +210,7 @@ async def send_bulk(
                         "type": "body",
                         "parameters": [
                                 {"type": "text", 
-                                "text": str(info.get("name", ""))}
+                                "text": name}
                                 ]
                     },
                     {
