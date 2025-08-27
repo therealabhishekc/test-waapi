@@ -33,8 +33,8 @@ call with our experts."
 # Example “hashmap” of recipients (E.164 numbers; no spaces, usually no '+')
 RECIPIENTS = {
     "14694652751": {"name": "Ahishek Chan", "address": "11 Apple St, NY", "buying_power": "Low"},
-    "19453083188": {"name": "Karthik",   "address": "221B Baker St, London", "buying_power": "Medium"},
-    "12142187390": {"name": "Sristy", "address": "DLF Phase 3, Gurgaon", "buying_power": "High"},
+    "12147184905": {"name": "Yogesh",   "address": "221B Baker St, London", "buying_power": "Medium"},
+    "16519556277": {"name": "Megha", "address": "DLF Phase 3, Gurgaon", "buying_power": "High"},
 }
 
 
