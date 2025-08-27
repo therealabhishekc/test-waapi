@@ -21,7 +21,14 @@ PDF_LOCAL_PATH = os.getenv("PDF_LOCAL_PATH") or "files/catalogue.pdf"
 
 unsub = "You have been successfully Unsubscribe from our mailing list. \
         Feel free to contact us for any queries in the future. \
-        Phone: 972 231 6776"
+        \n \n Phone: 972 231 6776"
+
+comment = "Step into a world of regal splendor and breathtaking artistry \
+        with our newest Jewelry Catalog. From Russian emerald masterpieces \
+        to antiqued gold creations adorned with polki-cut diamonds, pearls, \
+        and rubies, every piece is a story of heritage, craftsmanship, and \
+        opulence \n \n Want to learn more? Reply with 'YES' to schedule a \
+        call with our experts."
 
 # Example “hashmap” of recipients (E.164 numbers; no spaces, usually no '+')
 RECIPIENTS = {
@@ -119,9 +126,9 @@ async def webhook(request: Request, background: BackgroundTasks):
                 "type": "text",
                 "text": {"body": unsub}
             }
-        else:
+        elif clicked_text.lower() == "stop":
             if PDF_LOCAL_PATH and os.path.exists(PDF_LOCAL_PATH):
-                payload = upload_and_send_document(from_e164, PDF_LOCAL_PATH, "catalog.pdf", "Here is your PDF 📄")
+                payload = upload_and_send_document(from_e164, PDF_LOCAL_PATH, "catalog.pdf", comment)
             
         try:
             resp = requests.post(url, json=payload, headers=headers, timeout=15)
