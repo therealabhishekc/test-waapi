@@ -306,6 +306,7 @@ async def send_bulk(
 
             payload = {
                 "messaging_product": "whatsapp",
+                "recipient_type": "individual",
                 "to": to,
                 "type": "template",
                 "template": {
