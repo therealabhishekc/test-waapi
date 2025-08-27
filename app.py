@@ -176,6 +176,7 @@ async def send_bulk(
         for to, info in RECIPIENTS.items():
             components = []
             name = str(info.get("name", ""))
+            payload = {}
 
             if template == "test1":
                 components.append({
