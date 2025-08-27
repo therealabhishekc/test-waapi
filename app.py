@@ -107,9 +107,10 @@ async def webhook(request: Request, background: BackgroundTasks):
     from_e164 = msg.get("from")
 
     # Text body if present
-    msg_body = (msg.get("text") or {}).get("body", "")
-    btn = msg.get("button") or {}
-    clicked_text = btn.get("text")
+    # msg_body = (msg.get("text") or {}).get("body", "")
+    # btn = msg.get("button") or {}
+    # clicked_text = btn.get("text")
+    msg_body = (msg.get("text") or {}).get("body", "") or (msg.get("button") or {}).get("text", "")
 
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
@@ -119,18 +120,18 @@ async def webhook(request: Request, background: BackgroundTasks):
             "Content-Type": "application/json"
         }
 
-        if clicked_text.lower() == "unsubscribe" or msg_body.lower() == "stop":
+        if msg_body.lower() == "unsubscribe" or msg_body.lower() == "stop":
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
                 "type": "text",
                 "text": {"body": unsub}
             }
-        elif clicked_text.lower() == "shop":
+        elif msg_body.lower() == "shop":
             if PDF_LOCAL_PATH and os.path.exists(PDF_LOCAL_PATH):
                 payload = upload_and_send_document(from_e164, PDF_LOCAL_PATH, "catalog.pdf", comment)
 
-        elif clicked_text.lower() == "get to know more":
+        elif msg_body.lower() == "get to know more":
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
