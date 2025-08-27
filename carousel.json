@@ -1,0 +1,61 @@
+{
+  "messaging_product": "whatsapp",
+  "to": "15551234567",
+  "type": "template",
+  "template": {
+    "name": "testing_carousel",
+    "language": { "code": "en_US" },
+    "components": [
+      {
+        "type": "body",
+        "parameters": [
+          { "type": "text", "text": "Alex", "parameter_name": "t1" },   
+          { "type": "text", "text": "19.99", "parameter_name": "t2" }
+        ]
+      },
+      {
+        "type": "carousel",
+        "cards": [
+          {
+            "card_index": "0",
+            "components": [
+              {
+                "type": "header",
+                "parameters": [
+                  { "type": "image", 
+                    "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png",
+                    "parameter_name": "t3" } }
+                ]
+              },
+              {
+                "type": "body",
+                "parameters": [
+                  { "type": "text", "text": "19.99", "parameter_name": "t4" }
+                ]
+              }
+            ]
+          },
+          {
+            "card_index": "1",
+            "components": [
+              {
+                "type": "header",
+                "parameters": [
+                  { "type": "image", 
+                  "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png",
+                  "parameter_name": "t5" } }
+                ]
+              },
+              {
+                "type": "body",
+                "parameters": [
+                  { "type": "text", "text": "24.99", "parameter_name": "t6" }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
