@@ -203,6 +203,16 @@ async def send_bulk(
                     ]
                 })
 
+            elif template == "carousel":
+                components.append({
+                    "type": "body",
+                    "parameters": [
+                        {"type": "text", 
+                        "text": str(info.get("name", "")), 
+                        "parameter_name": "name"}
+                    ]
+                })
+
             payload = {
                 "messaging_product": "whatsapp",
                 "to": to,
