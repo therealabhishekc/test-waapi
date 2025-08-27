@@ -1,8 +1,4 @@
 {
-  "messaging_product": "whatsapp",
-  "to": "15551234567",
-  "type": "template",
-  "template": {
     "name": "testing_carousel",
     "language": { "code": "en_US" },
     "components": [
@@ -58,4 +54,3 @@
       }
     ]
   }
-}
