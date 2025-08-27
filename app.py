@@ -208,8 +208,7 @@ async def send_bulk(
                                 "type": "body",
                                 "parameters": [
                                         {"type": "text", 
-                                        "text": str(info.get("name", "")), 
-                                        "parameter_name": "name"}
+                                        "text": str(info.get("name", ""))}
                                         ]
                                     })
                 components.append({
