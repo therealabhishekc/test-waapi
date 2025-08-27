@@ -205,11 +205,55 @@ async def send_bulk(
 
             elif template == "carousel":
                 components.append({
-                    "type": "body",
-                    "parameters": [
-                        {"type": "text", 
-                        "text": str(info.get("name", "")), 
-                        "parameter_name": "name"}
+                                "type": "body",
+                                "parameters": [
+                                        {"type": "text", 
+                                        "text": str(info.get("name", "")), 
+                                        "parameter_name": "name"}
+                                        ]
+                                    })
+                components.append({
+                    "type": "caraousel",
+                    "card": [
+                        {
+                            "card_index": 0,
+                            "components": [
+                                {
+                                    "type": "header",
+                                    "parameters": [
+                                        { 
+                                            "type" : "image", "image": { "id" : "767100629367478",}
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "card_index": 1,
+                            "components": [
+                                {
+                                    "type": "header",
+                                    "parameters": [
+                                        { 
+                                            "type" : "image", "image": { "id" : "751232037792397",}
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "card_index": 2,
+                            "components": [
+                                {
+                                    "type": "header",
+                                    "parameters": [
+                                        { 
+                                            "type" : "image", "image": { "id" : "753862067404214",}
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
                     ]
                 })
 
