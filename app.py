@@ -214,7 +214,7 @@ async def send_bulk(
                                     })
                 components.append({
                     "type": "caraousel",
-                    "card": [
+                    "cards": [
                         {
                             "card_index": 0,
                             "components": [
