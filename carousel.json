@@ -9,8 +9,8 @@
       {
         "type": "body",
         "parameters": [
-          { "type": "text", "text": "Alex", "parameter_name": "t1" },   
-          { "type": "text", "text": "19.99", "parameter_name": "t2" }
+          { "type": "text", "parameter_name": "t1", "text": "Alex" },   
+          { "type": "text", "parameter_name": "t2", "text": "19.99" }
         ]
       },
       {
@@ -23,8 +23,8 @@
                 "type": "header",
                 "parameters": [
                   { "type": "image", 
-                    "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png",
-                    "parameter_name": "t3" } }
+                    "parameter_name": "t3",
+                    "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png" } }
                 ]
               },
               {
@@ -42,8 +42,8 @@
                 "type": "header",
                 "parameters": [
                   { "type": "image", 
-                  "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png",
-                  "parameter_name": "t5" } }
+                    "parameter_name": "t5",
+                   "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png"} }
                 ]
               },
               {
