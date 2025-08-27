@@ -204,73 +204,126 @@ async def send_bulk(
                 })
 
             elif template == "carousel":
-                components.append({
-                                "type": "body",
-                                "parameters": [
-                                        {"type": "text", 
-                                        "text": str(info.get("name", ""))}
+                components = [
+                    {
+                        "type": "body",
+                        "parameters": [
+                                {"type": "text", 
+                                "text": str(info.get("name", ""))}
+                                ]
+                    },
+                    {
+                        "type": "carousel",
+                        "cards": [
+                            {
+                                "card_index": 0,
+                                "components": [
+                                    {
+                                        "type": "header",
+                                        "parameters": [
+                                            { 
+                                                "type" : "image", "image": { "id" : "767100629367478"}
+                                            }
                                         ]
-                                    })
-                components.append({
-                    "type": "carousel",
-                    "cards": [
-                        {
-                            "card_index": 0,
-                            "components": [
-                                {
-                                    "type": "header",
-                                    "parameters": [
-                                        { 
-                                            "type" : "image", "image": { "id" : "767100629367478"}
-                                        }
-                                    ]
-                                }
-                                # {
-                                #     "type": "button",
-                                #     "sub_type": "quick_reply",
-                                #     "index": 0,
-                                #     "parameters": [
-                                #         { "type": "payload", "payload": "Get to know more" }
-                                #     ]
-                                # },
-                                # {
-                                #     "type": "button",
-                                #     "sub_type": "url",
-                                #     "index": 1,
-                                #     "parameters": [
-                                #         { "type": "payload", "text": "Shop" }
-                                #     ]
-                                # }
-                            ]
-                        },
-                        {
-                            "card_index": 1,
-                            "components": [
-                                {
-                                    "type": "header",
-                                    "parameters": [
-                                        { 
-                                            "type" : "image", "image": { "id" : "751232037792397"}
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "card_index": 2,
-                            "components": [
-                                {
-                                    "type": "header",
-                                    "parameters": [
-                                        { 
-                                            "type" : "image", "image": { "id" : "753862067404214"}
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                })
+                                    }
+                                ]
+                            },
+                            {
+                                "card_index": 1,
+                                "components": [
+                                    {
+                                        "type": "header",
+                                        "parameters": [
+                                            { 
+                                                "type" : "image", "image": { "id" : "751232037792397"}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "card_index": 2,
+                                "components": [
+                                    {
+                                        "type": "header",
+                                        "parameters": [
+                                            { 
+                                                "type" : "image", "image": { "id" : "753862067404214"}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+                # components.append({
+                #                 "type": "body",
+                #                 "parameters": [
+                #                         {"type": "text", 
+                #                         "text": str(info.get("name", ""))}
+                #                         ]
+                #                     })
+                # components.append({
+                #     "type": "carousel",
+                #     "cards": [
+                #         {
+                #             "card_index": 0,
+                #             "components": [
+                #                 {
+                #                     "type": "header",
+                #                     "parameters": [
+                #                         { 
+                #                             "type" : "image", "image": { "id" : "767100629367478"}
+                #                         }
+                #                     ]
+                #                 }
+                #                 # {
+                #                 #     "type": "button",
+                #                 #     "sub_type": "quick_reply",
+                #                 #     "index": 0,
+                #                 #     "parameters": [
+                #                 #         { "type": "payload", "payload": "Get to know more" }
+                #                 #     ]
+                #                 # },
+                #                 # {
+                #                 #     "type": "button",
+                #                 #     "sub_type": "url",
+                #                 #     "index": 1,
+                #                 #     "parameters": [
+                #                 #         { "type": "payload", "text": "Shop" }
+                #                 #     ]
+                #                 # }
+                #             ]
+                #         },
+                #         {
+                #             "card_index": 1,
+                #             "components": [
+                #                 {
+                #                     "type": "header",
+                #                     "parameters": [
+                #                         { 
+                #                             "type" : "image", "image": { "id" : "751232037792397"}
+                #                         }
+                #                     ]
+                #                 }
+                #             ]
+                #         },
+                #         {
+                #             "card_index": 2,
+                #             "components": [
+                #                 {
+                #                     "type": "header",
+                #                     "parameters": [
+                #                         { 
+                #                             "type" : "image", "image": { "id" : "753862067404214"}
+                #                         }
+                #                     ]
+                #                 }
+                #             ]
+                #         }
+                #     ]
+                # })
 
             payload = {
                 "messaging_product": "whatsapp",
