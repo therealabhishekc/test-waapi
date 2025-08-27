@@ -1,56 +1,53 @@
 {
-    "name": "testing_carousel",
-    "language": { "code": "en" },
-    "components": [
-      {
-        "type": "body",
-        "parameters": [
-          { "type": "text", "parameter_name": "t1", "text": "Alex" },   
-          { "type": "text", "parameter_name": "t2", "text": "19.99" }
-        ]
-      },
-      {
-        "type": "carousel",
-        "cards": [
-          {
-            "card_index": "0",
-            "components": [
-              {
-                "type": "header",
-                "parameters": [
-                  { "type": "image", 
-                    "parameter_name": "t3",
-                    "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png" } }
-                ]
-              },
-              {
-                "type": "body",
-                "parameters": [
-                  { "type": "text", "text": "19.99", "parameter_name": "t4" }
-                ]
-              }
-            ]
-          },
-          {
-            "card_index": "1",
-            "components": [
-              {
-                "type": "header",
-                "parameters": [
-                  { "type": "image", 
-                    "parameter_name": "t5",
-                   "image": { "link": "https://i.postimg.cc/bYgz8NbG/Untitled.png"} }
-                ]
-              },
-              {
-                "type": "body",
-                "parameters": [
-                  { "type": "text", "text": "24.99", "parameter_name": "t6" }
-                ]
-              }
-            ]
-          }
-        ]
+  "name": "carousel_template_product_cards_v1",
+  "language": "en_US",
+  "category": "marketing",
+  "components": [
+    {
+      "type": "body",
+      "text": "Rare succulents for sale! {{1}}, add these unique plants to your collection. All three of these rare succulents are available for purchase on our website, and they come with a 100% satisfaction guarantee. Whether you're a seasoned succulent enthusiast or just starting your plant collection, these rare succulents are sure to impress. Shop now and add some unique and beautiful plants to your collection!",
+      "example": {
+        "body_text": "Pablo"
       }
-    ]
-  }
+    },
+    {
+      "type": "carousel",
+      "cards": [
+        {
+          "components": [
+            {
+              "type": "header",
+              "format": "product"
+            },
+            {
+              "type": "buttons",
+              "buttons": [
+                {
+                  "type": "spm",
+                  "text": "View"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "components": [
+            {
+              "type": "header",
+              "format": "product"
+            },
+            {
+              "type": "buttons",
+              "buttons": [
+                {
+                  "type": "spm",
+                  "text": "View"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
