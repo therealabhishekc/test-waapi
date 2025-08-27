@@ -226,7 +226,7 @@ async def send_bulk(
                     },
                 }
 
-            elif template == "carousel":
+            elif template == "carousel1":
                 payload = {
                 "messaging_product": "whatsapp",
                 "recipient_type": "individual",
