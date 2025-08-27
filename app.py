@@ -129,6 +129,14 @@ async def webhook(request: Request, background: BackgroundTasks):
         elif clicked_text.lower() == "stop":
             if PDF_LOCAL_PATH and os.path.exists(PDF_LOCAL_PATH):
                 payload = upload_and_send_document(from_e164, PDF_LOCAL_PATH, "catalog.pdf", comment)
+
+        else:
+            payload = {
+                "messaging_product": "whatsapp",
+                "to": from_e164,
+                "type": "text",
+                "text": {"body": "Hello! Thanks for reaching out. We'll get back to you shortly."}
+            }
             
         try:
             resp = requests.post(url, json=payload, headers=headers, timeout=15)
