@@ -229,7 +229,7 @@ async def send_bulk(
                         "type": "body",
                         "parameters": [
                                 {"type": "text", 
-                                "text": name}
+                                "text": "Abhishek"}
                                 ]
                     },
                     {
