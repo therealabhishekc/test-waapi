@@ -24,11 +24,11 @@ unsub = "You have been successfully Unsubscribe from our mailing list. \
         \n \n Phone: 972 231 6776"
 
 comment = "Step into a world of regal splendor and breathtaking artistry \
-        with our newest Jewelry Catalog. From Russian emerald masterpieces \
-        to antiqued gold creations adorned with polki-cut diamonds, pearls, \
-        and rubies, every piece is a story of heritage, craftsmanship, and \
-        opulence \n \n Want to learn more? Reply with 'YES' to schedule a \
-        call with our experts."
+with our newest Jewelry Catalog. From Russian emerald masterpieces \
+to antiqued gold creations adorned with polki-cut diamonds, pearls, \
+and rubies, every piece is a story of heritage, craftsmanship, and \
+opulence \n \nWant to learn more? Reply with 'YES' to schedule a \
+call with our experts."
 
 # Example “hashmap” of recipients (E.164 numbers; no spaces, usually no '+')
 RECIPIENTS = {
@@ -119,7 +119,7 @@ async def webhook(request: Request, background: BackgroundTasks):
             "Content-Type": "application/json"
         }
 
-        if clicked_text.lower() in ("unsubscribe", "stop"):
+        if clicked_text.lower() == "unsubscribe" or clicked_text.lower() == "stop":
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
