@@ -119,7 +119,7 @@ async def webhook(request: Request, background: BackgroundTasks):
             "Content-Type": "application/json"
         }
 
-        if clicked_text.lower() == "unsubscribe" or clicked_text.lower() == "stop":
+        if clicked_text.lower() == "unsubscribe" or msg_body.lower() == "stop":
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
@@ -138,7 +138,7 @@ async def webhook(request: Request, background: BackgroundTasks):
                 "text": {"body": "Amazing! One of our jewelry specialists will be reaching out to you shortly."}
             }
 
-        elif len(clicked_text.lower()) > 0:
+        elif len(msg_body.lower()) > 0:
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
