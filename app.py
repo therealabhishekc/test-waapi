@@ -76,18 +76,6 @@ def upload_and_send_document(to: str, file_path: str, filename: str | None = Non
         "document": {"id": media_id, "filename": filename or os.path.basename(file_path), **({"caption": caption} if caption else {})}
     }
 
-    # 2) send by id
-    # send_url = f"https://graph.facebook.com/v22.0/{PHONE_NUMBER_ID}/messages"
-    # payload = {
-    #     "messaging_product": "whatsapp",
-    #     "to": to,
-    #     "type": "document",
-    #     "document": {"id": media_id, "filename": filename or os.path.basename(file_path), **({"caption": caption} if caption else {})}
-    # }
-    # resp = requests.post(send_url, json=payload, headers=_headers(), timeout=20)
-    # print("send_document_id:", resp.status_code, resp.text)
-    # resp.raise_for_status()
-
 
 # Webhook receiver (POST /webhook)
 @app.post("/webhook")
@@ -234,8 +222,8 @@ async def send_bulk(
                 "to": to,
                 "type": "template",
                 "template": {
-                    "name": template,
-                    "language": {"code": lang},
+                    "name": "carousel1",
+                    "language": {"code": "en_US"},
                     "components": [
                     {
                         "type": "body",
