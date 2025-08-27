@@ -106,11 +106,19 @@ async def webhook(request: Request, background: BackgroundTasks):
     phone_number_id = metadata.get("phone_number_id")
     from_e164 = msg.get("from")
 
-    # Text body if present
-    # msg_body = (msg.get("text") or {}).get("body", "")
-    # btn = msg.get("button") or {}
-    # clicked_text = btn.get("text")
-    msg_body = (msg.get("text") or {}).get("body", "") or (msg.get("button") or {}).get("text", "")
+    # msg_body = (msg.get("text") or {}).get("body", "") or (msg.get("button") or {}).get("text", "")
+
+    mtype = msg.get("type")  # 'text', 'button', 'interactive', 'image', 'document', etc.
+    intent = ""
+
+    if mtype == "text":
+        intent = (msg.get("text") or {}).get("body", "") or ""
+    elif mtype == "button":
+        intent = (msg.get("button") or {}).get("text", "") or ""
+
+    intent = intent.strip().lower()
+
+    payload = None 
 
     if phone_number_id and from_e164:
         # Build WhatsApp Cloud API call
@@ -120,18 +128,21 @@ async def webhook(request: Request, background: BackgroundTasks):
             "Content-Type": "application/json"
         }
 
-        if msg_body.lower() == "unsubscribe" or msg_body.lower() == "stop":
+        #if msg_body.lower() == "unsubscribe" or msg_body.lower() == "stop":
+        if intent in {"unsubscribe", "stop"}:
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
                 "type": "text",
                 "text": {"body": unsub}
             }
-        elif msg_body.lower() == "shop":
+        #elif msg_body.lower() == "shop":
+        elif intent == "shop":
             if PDF_LOCAL_PATH and os.path.exists(PDF_LOCAL_PATH):
                 payload = upload_and_send_document(from_e164, PDF_LOCAL_PATH, "catalog.pdf", comment)
 
-        elif msg_body.lower() == "get to know more":
+        #elif msg_body.lower() == "get to know more":
+        elif intent == "get to know more":
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
@@ -139,14 +150,16 @@ async def webhook(request: Request, background: BackgroundTasks):
                 "text": {"body": "Amazing! One of our jewelry specialists will be reaching out to you shortly."}
             }
 
-        elif len(msg_body.lower()) > 0:
+        #elif len(msg_body.lower()) > 0:
+        elif mtype == "text" and intent:
             payload = {
                 "messaging_product": "whatsapp",
                 "to": from_e164,
                 "type": "text",
                 "text": {"body": "Hello! Thanks for reaching out. We'll get back to you shortly."}
             }
-            
+    
+    if payload:
         try:
             resp = requests.post(url, json=payload, headers=headers, timeout=15)
             resp.raise_for_status()
@@ -155,7 +168,7 @@ async def webhook(request: Request, background: BackgroundTasks):
             print("Send error:", e)
             if resp is not None:
                 print("Status:", resp.status_code)
-                print(msg_body)
+                print(intent)
                 print("Graph body:", resp.text)
 
     return {"ok": True}
