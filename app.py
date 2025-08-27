@@ -224,6 +224,22 @@ async def send_bulk(
                                             "type" : "image", "image": { "id" : "767100629367478",}
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "quick_reply",
+                                    "index": 0,
+                                    "parameters": [
+                                        { "type": "payload", "payload": "Get to know more" }
+                                    ]
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "url",
+                                    "index": 1,
+                                    "parameters": [
+                                        { "type": "payload", "text": "Shop" }
+                                    ]
                                 }
                             ]
                         },
@@ -237,6 +253,22 @@ async def send_bulk(
                                             "type" : "image", "image": { "id" : "751232037792397",}
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "quick_reply",
+                                    "index": 0,
+                                    "parameters": [
+                                        { "type": "payload", "payload": "Get to know more" }
+                                    ]
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "url",
+                                    "index": 1,
+                                    "parameters": [
+                                        { "type": "payload", "text": "Shop" }
+                                    ]
                                 }
                             ]
                         },
@@ -249,6 +281,22 @@ async def send_bulk(
                                         { 
                                             "type" : "image", "image": { "id" : "753862067404214",}
                                         }
+                                    ]
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "quick_reply",
+                                    "index": 0,
+                                    "parameters": [
+                                        { "type": "payload", "payload": "Get to know more" }
+                                    ]
+                                },
+                                {
+                                    "type": "button",
+                                    "sub_type": "url",
+                                    "index": 1,
+                                    "parameters": [
+                                        { "type": "payload", "text": "Shop" }
                                     ]
                                 }
                             ]
