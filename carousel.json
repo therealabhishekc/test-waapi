@@ -1,11 +1,11 @@
 {
-  "name": "carousel_template_product_cards_v1",
+  "name": "product_carousel",
   "language": "en_US",
   "category": "marketing",
   "components": [
     {
       "type": "body",
-      "text": "Rare succulents for sale! {{1}}, add these unique plants to your collection. All three of these rare succulents are available for purchase on our website, and they come with a 100% satisfaction guarantee. Whether you're a seasoned succulent enthusiast or just starting your plant collection, these rare succulents are sure to impress. Shop now and add some unique and beautiful plants to your collection!",
+      "text": "Hi {{name}}, welcome to the world of Luxury ✨ \n \n Indulge in timeless elegance as you explore our exquisite jewelry collections. As a token of our appreciation, with every purchase of $4000+, you will receive a complimentary 1 gram 24K gold coin.",
       "example": {
         "body_text": "Pablo"
       }
@@ -14,35 +14,70 @@
       "type": "carousel",
       "cards": [
         {
+          "card_inndex": "0",
           "components": [
             {
               "type": "header",
-              "format": "product"
+              "format": "image",
+              "example": {
+                "header_handle": ["4:VW50aXRsZWQucG5n:aW1hZ2UvcG5n:ARafn6iVteZ-qjx_7jnb0T9G05_FZfXSi8PhPnDVVy966ZmovyjXmcEqUuS35N7R0rv5kDWU1ceU4KufdPIUWv7VpcR1Efsb25b5k8KpDfQqxg:e:1756612280:620456670393948:100081468894392:ARb9OmA7Hwp5uCXKYiI"]
+              }
+            },
+            {
+              "type": "body",
+              "text": "Image description here"
             },
             {
               "type": "buttons",
               "buttons": [
-                {
-                  "type": "spm",
-                  "text": "View"
-                }
+                {"type": "quick_reply", "text": "Get to know more"},
+                {"type": "url", "text": "Shop", "url": "https://www.govindjis.com/"}
               ]
             }
           ]
         },
         {
+          "card_inndex": "0",
           "components": [
             {
               "type": "header",
-              "format": "product"
+              "format": "image",
+              "example": {
+                "header_handle": ["4:VW50aXRsZWQucG5n:aW1hZ2UvcG5n:ARafn6iVteZ-qjx_7jnb0T9G05_FZfXSi8PhPnDVVy966ZmovyjXmcEqUuS35N7R0rv5kDWU1ceU4KufdPIUWv7VpcR1Efsb25b5k8KpDfQqxg:e:1756612280:620456670393948:100081468894392:ARb9OmA7Hwp5uCXKYiI"]
+              }
+            },
+            {
+              "type": "body",
+              "text": "Image description here"
             },
             {
               "type": "buttons",
               "buttons": [
-                {
-                  "type": "spm",
-                  "text": "View"
-                }
+                {"type": "quick_reply", "text": "Get to know more"},
+                {"type": "url", "text": "Shop", "url": "https://www.govindjis.com/"}
+              ]
+            }
+          ]
+        }, 
+        {
+          "card_inndex": "0",
+          "components": [
+            {
+              "type": "header",
+              "format": "image",
+              "example": {
+                "header_handle": ["4:VW50aXRsZWQucG5n:aW1hZ2UvcG5n:ARafn6iVteZ-qjx_7jnb0T9G05_FZfXSi8PhPnDVVy966ZmovyjXmcEqUuS35N7R0rv5kDWU1ceU4KufdPIUWv7VpcR1Efsb25b5k8KpDfQqxg:e:1756612280:620456670393948:100081468894392:ARb9OmA7Hwp5uCXKYiI"]
+              }
+            },
+            {
+              "type": "body",
+              "text": "Image description here"
+            },
+            {
+              "type": "buttons",
+              "buttons": [
+                {"type": "quick_reply", "text": "Get to know more"},
+                {"type": "url", "text": "Shop", "url": "https://www.govindjis.com/"}
               ]
             }
           ]
