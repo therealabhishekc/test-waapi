@@ -25,7 +25,7 @@ unsub = "You have been successfully Unsubscribe from our mailing list. \
 
 # Example “hashmap” of recipients (E.164 numbers; no spaces, usually no '+')
 RECIPIENTS = {
-    "14694652751": {"name": "Ahishek", "address": "11 Apple St, NY", "buying_power": "Low"},
+    "14694652751": {"name": "Ahishek Chan", "address": "11 Apple St, NY", "buying_power": "Low"},
     "19453083188": {"name": "Karthik",   "address": "221B Baker St, London", "buying_power": "Medium"},
     "12142187390": {"name": "Sristy", "address": "DLF Phase 3, Gurgaon", "buying_power": "High"},
 }
@@ -222,14 +222,14 @@ async def send_bulk(
                 "to": to,
                 "type": "template",
                 "template": {
-                    "name": "carousel1",
-                    "language": {"code": "en_US"},
+                    "name": template,
+                    "language": {"code": lang},
                     "components": [
                     {
                         "type": "body",
                         "parameters": [
                                 {"type": "text", 
-                                "text": "Abhishek"}
+                                "text": name}
                                 ]
                     },
                     {
